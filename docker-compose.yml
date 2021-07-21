@@ -1,0 +1,36 @@
+version: '3'
+services:
+  web:
+    build:
+      context: .
+    env_file: ./.env
+#    command: bash -c "npm install && npm start"
+#    command: bash -c "yarn && yarn start"
+    command: yarn start
+    volumes:
+      - .:/app/
+      - /app/node_modules
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mysqldb
+    environment:
+      MYSQL_HOST: mysqldb
+  mysqldb:
+    image: mysql/mysql-server:5.7
+    restart: always
+    env_file: ./.env
+    environment:
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: test_
+      MYSQL_ROOT_HOST: 127.0.0.1
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./sqls:/docker-entrypoint-initdb.d
+
+volumes:
+  mysql:
+  mysql_config:

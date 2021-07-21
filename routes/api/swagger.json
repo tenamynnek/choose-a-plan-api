@@ -1,0 +1,64 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Plan API",
+    "version": "1.0.0",
+    "title": "Plan API"
+  },
+  "basePath": "/",
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
+  "paths": {
+    "/plans": {
+      "x-swagger-router-controller": "plan",
+      "get": {
+        "operationId": "getAllPlansWithServices",
+        "summary": "All plan with corresponding service id",
+        "responses": {
+          "200": {
+            "description": "All plan with corresponding service id",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": { "type": "number" },
+                  "name": { "type": "string" },
+                  "price": { "type": "number" },
+                  "serviceIds": {
+                    "type": "array",
+                    "items": {
+                      "type": "number"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/services": {
+      "x-swagger-router-controller": "service",
+      "get": {
+        "operationId": "getAllServices",
+        "summary": "All services",
+        "responses": {
+          "200": {
+            "description": "All services",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": { "type": "number" },
+                  "name": { "type": "string" }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
