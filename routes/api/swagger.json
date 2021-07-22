@@ -24,7 +24,10 @@
               "properties": {
                 "name": { "type": "string" },
                 "price": { "type": "number" },
-                "serviceId": { "type": "array" }
+                "serviceId": {
+                  "type": "array",
+                  "items": { "type": "number" }
+                }
               },
               "required": ["name", "price", "serviceId"]
             }
