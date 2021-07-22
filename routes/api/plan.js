@@ -7,6 +7,18 @@ const getAllPlansWithServices = asyncHandler(async (req, res, next) => {
   res.status(200).send(plans);
 });
 
+const createNewPlan = asyncHandler(async (req, res, next) => {
+  const {
+    payload: { value: payload },
+  } = req.swagger.params;
+  const { name, price, serviceId } = payload;
+
+  await planService.createNewPlan(name, price, serviceId);
+
+  res.status(200).send({ status: "created" });
+});
+
 module.exports = {
   getAllPlansWithServices,
+  createNewPlan,
 };

@@ -11,6 +11,34 @@
   "paths": {
     "/plans": {
       "x-swagger-router-controller": "plan",
+      "post": {
+        "operationId": "createNewPlan",
+        "summary": "Create New Plan",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "payload",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": { "type": "string" },
+                "price": { "type": "number" },
+                "serviceId": { "type": "array" }
+              },
+              "required": ["name", "price", "serviceId"]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ok",
+            "schema": {
+              "type": "object"
+            }
+          }
+        }
+      },
       "get": {
         "operationId": "getAllPlansWithServices",
         "summary": "All plan with corresponding service id",

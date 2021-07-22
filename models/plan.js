@@ -8,4 +8,14 @@ module.exports = {
 
     return results[0];
   },
+  createNewPlan: async (name, price, connection) => {
+    const sql = "insert into plans(name, price) values(?, ?)";
+    let result;
+    if (connection) {
+      result = await connection.execute(sql, [name, price]);
+    } else {
+      result = await db.query(sql, [name, price]);
+    }
+    return result[0];
+  },
 };
