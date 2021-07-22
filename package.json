@@ -4,7 +4,8 @@
   "scripts": {
     "start": "node ./bin/www",
     "dev": "nodemon --trace-warnings ./bin/www",
-    "lint-staged": "lint-staged"
+    "lint-staged": "lint-staged",
+    "test": "jest"
   },
   "dependencies": {
     "body-parser": "^1.19.0",
@@ -13,6 +14,7 @@
     "express": "^4.8.0",
     "express-interceptor": "^1.2.0",
     "helmet": "^4.6.0",
+    "jest": "^27.0.6",
     "mysql2": "^2.2.5",
     "ramda": "^0.27.1",
     "swagger-tools": "^0.10.4",

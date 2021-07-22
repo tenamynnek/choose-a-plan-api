@@ -6,7 +6,7 @@ const getAllPlansWithServices = async () => {
   return plans.map((result) => {
     return {
       ...result,
-      serviceId: R.propOr("", "service_id", result).split(","),
+      serviceId: R.propOr("", "serviceId", result).split(",").map(Number),
     };
   });
 };
